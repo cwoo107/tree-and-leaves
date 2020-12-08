@@ -17,24 +17,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :folderable_id %>
-    <%= form.text_field :folderable_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :folderable_id %>
-    <%= form.number_field :folderable_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :folderable_type %>
-    <%= form.text_field :folderable_type %>
-  </div>
+  <% if @folderable %>
+    <div class="field">
+      <%= form.hidden_field :folderable_id, value: @folderable.id %>
+      <%= form.hidden_field :folderable_type, value: 'Folder' %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

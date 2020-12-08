@@ -15,6 +15,9 @@ class FoldersController < ApplicationController
   # GET /folders/new
   def new
     @folder = Folder.new
+    if params[:parent]
+      @folderable = Folder.find(params[:parent])
+    end
   end
 
   # GET /folders/1/edit
@@ -65,6 +68,9 @@ class FoldersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_folder
       @folder = Folder.find(params[:id])
+      if @folder.folderable
+        @folderable = Folder.find(@folder.folderable_id)
+      end
     end
 
     # Only allow a list of trusted parameters through.
