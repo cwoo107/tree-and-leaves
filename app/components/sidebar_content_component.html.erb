@@ -1,0 +1,27 @@
+<script>
+    $(function() {
+        $('.folder-tree li').click(function(evt) {
+            evt.stopPropagation();
+            $(this).toggleClass('expanded');
+        });
+    });
+</script>
+<div class="sub-header"><%= @folder.title %></div>
+<ul class="folder-tree">
+  <% @folder.folders.order(created_at: :asc).each do |folder| %>
+    <li><i class="folder fa fa-folder"></i> <%= link_to folder.title, folder_path(folder) %>
+      <% if folder.folders.present? || folder.notes.present? %>
+        <div class="arrow"><i class="fa fa-angle-down"></i></div>
+
+        <ul>
+          <%= render(SubfolderComponent.new(folder: folder.id)) %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+  <% if @folder.notes.present? %>
+    <% @folder.notes.order(created_at: :asc).each do |note| %>
+      <li><i class="file fa fa-file-alt"></i> <%= link_to note.title, note_path(note) %></li>
+    <% end %>
+  <% end %>
+</ul>

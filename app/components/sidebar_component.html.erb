@@ -1,0 +1,34 @@
+<div class="sidenav">
+  <div class="nav-content">
+    <div class="header">
+      <%= @current_user.email %>
+    </div>
+    <hr/>
+    <% if @folder %>
+      <%= render(SidebarContentComponent.new(folder: @folder.id))%>
+      <% else %>
+      <%= render(SidebarIndexComponent.new(user: @current_user)) %>
+    <% end %>
+    <br/>
+    <hr/>
+    <% if @folder %>
+      <%= link_to(raw("<i class='fa fa-plus'></i> New Note"), new_note_path(folder: @folder), class: 'nav-link') %>
+    <% else %>
+      <%= link_to(raw("<i class='fa fa-plus'></i> New Note"), new_note_path, class: 'nav-link') %>
+    <% end %>
+    <br/>
+    <% if @folder %>
+      <%= link_to(raw("<i class='fa fa-plus'></i> New Folder"), new_folder_path, class: 'nav-link') %>
+    <% else %>
+      <%= link_to(raw("<i class='fa fa-plus'></i> New Folder"), new_folder_path, class: 'nav-link') %>
+    <% end %>
+      <br/>
+    <% if @folder %>
+      <% if @folder.folderable.present? %>
+      <%= link_to(raw("<i class='fa fa-reply'></i> Back"), folder_path(@folder.folderable.id), class: 'nav-link') %>
+      <% else %>
+        <%= link_to(raw("<i class='fa fa-reply'></i> Back"), folders_path, class: 'nav-link') %>
+      <% end %>
+  <% end %>
+  </div>
+</div>

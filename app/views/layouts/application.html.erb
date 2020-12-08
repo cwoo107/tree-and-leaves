@@ -7,9 +7,33 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <%= yield %>
+  <div class="with-sidebar">
+    <div> <!-- intermediary wrapper -->
+      <div>
+        <% if user_signed_in? %>
+          <% if @folder.present? %>
+            <%= render(SidebarComponent.new(user: current_user, folder: @folder.id))%>
+          <% else %>
+            <%= render(SidebarComponent.new(user: current_user, folder: false))%>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   </body>
 </html>
