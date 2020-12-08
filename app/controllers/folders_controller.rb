@@ -4,7 +4,8 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.all
+    @folders = Folder.all.where(user_id: current_user.id).order(updated_at: :desc).limit(4)
+    @notes = Note.all.where(user_id: current_user.id).order(updated_at: :desc).limit(4)
   end
 
   # GET /folders/1

@@ -1,12 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-
-
-
-
-
-
-
-
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>
+<div class="container" style="margin-left: -150px">
+  <% if @folder.folders %>
+  <% @folder.folders.each do |folder| %>
+    <div class="item">
+      <%= link_to folder_path(folder) do %>
+        <div class="card">
+      <span class="header">
+        <i class="folder fa fa-folder"></i>
+      </span>
+          <span class="sub-header">
+        <%= folder.title %>
+      </span>
+          <p>
+            Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="container" style="margin-left: -150px">
+  <% if @folder.notes %>
+    <% @folder.notes.each do |note| %>
+      <div class="item">
+        <%= link_to note_path(note) do %>
+          <div class="card">
+      <span class="header">
+        <i class="file fa fa-file-alt"></i>
+      </span>
+            <span class="sub-header">
+        <%= note.title %>
+      </span>
+            <p>
+              Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

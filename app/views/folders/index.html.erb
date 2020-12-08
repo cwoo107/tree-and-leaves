@@ -1,29 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Folders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>View</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container" style="margin-left: -150px">
+  <% if @folders.present? %>
     <% @folders.each do |folder| %>
-      <tr>
-        <td><%= folder.title %></td>
-        <td><%= link_to 'Show', folder %></td>
-        <td><%= link_to 'Edit', edit_folder_path(folder) %></td>
-        <td><%= link_to 'Destroy', folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="item">
+        <%= link_to folder_path(folder) do %>
+          <div class="card">
+            <span class="header">
+              <i class="folder fa fa-folder"></i>
+            </span>
+            <span class="sub-header">
+              <%= folder.title %>
+            </span>
+            <p>
+              Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+            </p>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
+  <% end %>
+</div>
+<div class="container" style="margin-left: -150px">
+  <% if @notes.present? %>
+    <% @notes.each do |note| %>
+      <div class="item">
+        <%= link_to note_path(note) do %>
+          <div class="card">
+            <div class="header">
+              <i class="file fa fa-file-alt"></i>
+            </div>
+            <div class="sub-header">
+              <%= note.title %>
+            </div>
+            <p>
+              Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <br>
 
 <%= link_to 'New Folder', new_folder_path %>
