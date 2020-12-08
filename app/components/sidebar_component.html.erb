@@ -11,6 +11,7 @@
     <% end %>
     <br/>
     <hr/>
+    <br/>
     <% if @folder %>
       <%= link_to(raw("<i class=' fa fa-folder-plus'></i> New Folder"), new_folder_path(parent: @folder), class: 'nav-link') %>
     <% else %>
@@ -30,7 +31,11 @@
         <%= link_to(raw("<i class='fa fa-reply'></i> Back"), folders_path, class: 'nav-link') %>
       <% end %>
   <% end %>
+    <br/>
     <hr/>
+    <br/>
+    <%= link_to(raw("<i class='fa fa-home'></i> Home"), root_path, class: 'nav-link') %>
+    <br/>
     <%= link_to(raw("<i class='fa fa-sign-out-alt'></i> Logout"), destroy_user_session_path, method: :delete, class: 'nav-link') %>
   </div>
 </div>
