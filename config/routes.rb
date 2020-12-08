@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "folders#index"
   resources :notes
   resources :folders
   devise_for :users
