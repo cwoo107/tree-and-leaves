@@ -61,7 +61,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "tree_and_leaves_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'treeandleaves.com' }
+  config.action_mailer.default_url_options = { host: ENV['DEFAULT_URL'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
