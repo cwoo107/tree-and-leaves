@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
-
-<div class="container" style="margin-left: -150px">
+<div class="container">
+  <h1>Recently Updated</h1>
+</div>
+<div class="container" >
+  <div class="row">
   <% if @folders.present? %>
     <% @folders.each do |folder| %>
-      <div class="item">
+      <div class="col-lg-3">
         <%= link_to folder_path(folder) do %>
           <div class="card">
             <span class="header">
               <i class="folder fa fa-folder"></i>
-            </span>
-            <span class="sub-header">
+              <span class="sub-header">
               <%= folder.title %>
             </span>
+            </span>
+
             <p>
               Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
             </p>
@@ -20,19 +24,22 @@
       </div>
     <% end %>
   <% end %>
+  </div>
 </div>
-<div class="container" style="margin-left: -150px">
+<div class="container" >
+  <div class="row">
   <% if @notes.present? %>
     <% @notes.each do |note| %>
-      <div class="item">
+      <div class="col-lg-3">
         <%= link_to note_path(note) do %>
           <div class="card">
-            <div class="header">
+            <span class="header">
               <i class="file fa fa-file-alt"></i>
-            </div>
-            <div class="sub-header">
+              <span class="sub-header">
               <%= note.title %>
-            </div>
+            </span>
+            </span>
+
             <p>
               Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
             </p>
@@ -41,6 +48,7 @@
       </div>
     <% end %>
   <% end %>
+  </div>
 </div>
 <br>
 

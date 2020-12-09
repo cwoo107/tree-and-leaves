@@ -1,26 +1,45 @@
-<h2>Log in</h2>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="intro">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          "He shook Parish's hand warmly: a good, firm, honest hand it seemed. He turned and looked back for a moment. The blossom on the Great Tree was shining like flame. All the birds were flying in the air and singing. Then he smiled, and nodded to Parish, and went off with the shepherd.
+        <br/>
+          He was going to learn about sheep, and the high pasturages, and look at a wider sky, and walk ever further and further towards the Mountains, always uphill. Beyond that I cannot guess what became of him. Even little Niggle in his old home could glimpse the Mountains far away, and they got into the borders of his picture; but what they are really like, and what lies beyond them, only those can say who have climbed them."
+      </div>
+      <br/>
+      <div class="card text-center">
+        <div class="card-body">
+          <h2>Log in</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <div class="field">
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

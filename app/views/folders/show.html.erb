@@ -1,17 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container" style="margin-left: -150px">
+<div class="container" >
+  <div class="row">
   <% if @folder.folders %>
   <% @folder.folders.each do |folder| %>
-    <div class="item">
+    <div class="col-lg-4">
       <%= link_to folder_path(folder) do %>
         <div class="card">
       <span class="header">
-        <i class="folder fa fa-folder"></i>
-      </span>
-          <span class="sub-header">
-        <%= folder.title %>
-      </span>
+              <i class="folder fa fa-folder"></i>
+              <span class="sub-header">
+              <%= folder.title %>
+            </span>
+            </span>
           <p>
             Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
           </p>
@@ -20,19 +21,21 @@
     </div>
     <% end %>
   <% end %>
+  </div>
 </div>
-<div class="container" style="margin-left: -150px">
+<div class="container">
+  <div class="row">
   <% if @folder.notes %>
     <% @folder.notes.each do |note| %>
-      <div class="item">
-        <%= link_to note_path(note) do %>
-          <div class="card">
+        <div class="col-lg-4">
+          <%= link_to note_path(note) do %>
+            <div class="card">
       <span class="header">
-        <i class="file fa fa-file-alt"></i>
-      </span>
-            <span class="sub-header">
-        <%= note.title %>
-      </span>
+              <i class="file fa fa-file-alt"></i>
+              <span class="sub-header">
+              <%= note.title %>
+            </span>
+            </span>
             <p>
               Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
             </p>
@@ -41,4 +44,5 @@
       </div>
     <% end %>
   <% end %>
+  </div>
 </div>

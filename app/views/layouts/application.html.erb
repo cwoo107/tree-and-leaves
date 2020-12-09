@@ -1,39 +1,56 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <title>TreeAndLeaves</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g==" crossorigin="anonymous"></script>
 
   </head>
 
   <body>
-  <div class="with-sidebar">
-    <div> <!-- intermediary wrapper -->
-      <div>
-        <% if user_signed_in? %>
-          <% if @folder.present? %>
-            <%= render(SidebarComponent.new(user: current_user, folder: @folder.id))%>
-          <% else %>
-            <%= render(SidebarComponent.new(user: current_user, folder: false))%>
-          <% end %>
+
+  <div class="wrapper">
+
+    <!-- Sidebar -->
+    <% if user_signed_in? %>
+    <nav id="sidebar">
+
+        <% if @folder.present? %>
+          <%= render(SidebarComponent.new(user: current_user, folder: @folder.id))%>
+        <% else %>
+          <%= render(SidebarComponent.new(user: current_user, folder: false))%>
         <% end %>
+    </nav>
+      <div class="sidebarCollapse-container">
+        <button type="button" id="sidebarCollapse" class="btn btn-secondary" style="border-radius: 0px">
+          <i class="fas fa-align-left"></i>
+        </button>
       </div>
-      <div>
-        <div class="container">
-          <%= yield %>
-        </div>
-      </div>
+    <% end %>
+
+    <!-- Page Content -->
+    <div id="content">
+      <%= yield %>
     </div>
+
   </div>
 
-
-
   </body>
+<script>
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+</script>
 </html>

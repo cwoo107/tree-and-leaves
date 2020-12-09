@@ -8,8 +8,8 @@
 </script>
 <div>
   <span class="sub-header"><%= @folder.title %></span>
-  <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_folder_path(@folder)) %>
 </div>
+<br/>
 <ul class="folder-tree">
   <% @folder.folders.order(created_at: :asc).each do |folder| %>
     <li><i class="folder fa fa-folder"></i> <%= link_to folder.title, folder_path(folder) %>

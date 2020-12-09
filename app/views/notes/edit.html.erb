@@ -1,13 +1,10 @@
 <div class="container">
-  <div class="item">
-    <h1>Editing Note</h1>
-    <%= link_to 'Show', @note %> |
-    <%= link_to 'Back', notes_path %>
-    <div class="card">
-
-
-      <%= render 'form', note: @note %>
-
+  <div class="row">
+    <div class="cols-12">
+      <h1>Editing Note</h1>
+      <%= link_to 'Show', @note %> |
+      <%= link_to 'Back', notes_path %>
+        <%= render 'form', note: @note %>
 
     </div>
   </div>
