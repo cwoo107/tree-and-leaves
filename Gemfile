@@ -60,3 +60,7 @@ gem 'devise'
 gem "view_component", require: "view_component/engine"
 
 gem 'font-awesome-sass', '~> 5.15.1'
+
+gem 'trestle'
+
+gem 'trestle-auth'
