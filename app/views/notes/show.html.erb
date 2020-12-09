@@ -4,6 +4,7 @@
 <% else %>
   <%= link_to 'Home', root_path %> /
 <% end %>
+<%= link_to @folder.title, @folder %> /
 <%= @note.title %>
 <div class="container-fluid">
   <div class="row">
