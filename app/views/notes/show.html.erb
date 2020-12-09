@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
-  <div class="item">
-    <h1>
-      <%= @note.title %>
-    </h1>
-    <%= link_to 'Edit', edit_note_path(@note) %>
-    <div class="card">
-    <%= @note.content %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1>
+        <%= @note.title %>
+      </h1>
+      <%= link_to 'Edit', edit_note_path(@note) %>
+      <div class="card">
+        <%= @note.content %>
+      </div>
     </div>
   </div>
 </div>
