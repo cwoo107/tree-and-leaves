@@ -16,6 +16,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@media screen and (min-width: 100em) {
+  html {
+    font-size: .9vw;
+  }
+}
+
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif !important;
     background-color: #F8F8F8 !important;
