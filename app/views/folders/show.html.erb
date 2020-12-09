@@ -2,35 +2,36 @@
 
 <div class="container" >
   <div class="row">
-  <% if @folder.folders %>
-  <% @folder.folders.each do |folder| %>
-    <div class="col-lg-5">
-      <%= link_to folder_path(folder) do %>
-        <div class="card">
+    <% if @folder.folders %>
+      <% @folder.folders.each do |folder| %>
+        <div class="col-lg-5">
+          <%= link_to folder_path(folder) do %>
+            <div class="card">
       <span class="header">
               <i class="folder fa fa-folder"></i>
               <span class="sub-header">
               <%= folder.title %>
             </span>
             </span>
-          <p>
-            Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
-          </p>
+              <p>
+                Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+              </p>
+            </div>
+          <% end %>
+          <div class="float-right">
+            <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_folder_path(folder), class: 'btn btn-light') %>
+            <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), folder, method: :delete, data: { confirm: 'This action will delete all contents of this folder and cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
+          </div>
         </div>
       <% end %>
-      <div class="float-right">
-        <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_folder_path(folder), class: 'btn btn-light') %>
-        <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), folder, method: :delete, data: { confirm: 'This action will delete all contents of this folder and cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
-      </div>
-    </div>
     <% end %>
-  <% end %>
+
   </div>
 </div>
 <div class="container">
   <div class="row">
-  <% if @folder.notes %>
-    <% @folder.notes.each do |note| %>
+    <% if @folder.notes %>
+      <% @folder.notes.each do |note| %>
         <div class="col-lg-5">
           <%= link_to note_path(note) do %>
             <div class="card">
@@ -40,17 +41,39 @@
               <%= note.title %>
             </span>
             </span>
-            <p>
-              Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
-            </p>
-          </div>
-        <% end %>
+              <p>
+                Updated: <%= note.updated_at.localtime.strftime("%m/%d at %H:%m") %>
+              </p>
+            </div>
+          <% end %>
           <div class="float-right">
             <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_note_path(note), class: 'btn btn-light') %>
             <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), note, method: :delete, data: { confirm: 'This action cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
           </div>
-      </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <%= link_to new_folder_path(parent: @folder) do %>
+        <div class="card">
+          <div class="new-card text-center">
+            <i class="fa fa-plus"></i>
+            New Folder
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-5">
+      <%= link_to new_note_path(folder: @folder) do %>
+        <div class="card">
+          <div class="new-card text-center">
+            <i class="fa fa-plus"></i>
+            New Note
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
