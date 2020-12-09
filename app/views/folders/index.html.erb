@@ -8,7 +8,8 @@
     <% @folders.each do |folder| %>
       <div class="col-lg-5">
         <%= link_to folder_path(folder) do %>
-          <div class="card">
+
+      <div class="card">
             <span class="header">
               <i class="folder fa fa-folder"></i>
               <span class="sub-header">
@@ -19,9 +20,15 @@
             <p>
               Updated: <%= folder.updated_at.localtime.strftime("%m/%d at %H:%m") %>
             </p>
-          </div>
-        <% end %>
-      </div>
+              </div>
+
+          <% end %>
+        <div class="float-right">
+          <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_folder_path(folder), class: 'btn btn-light') %>
+          <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), folder, method: :delete, data: { confirm: 'This action will delete all contents of this folder and cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
+        </div>
+        </div>
+
     <% end %>
   <% end %>
   </div>
@@ -45,6 +52,10 @@
             </p>
           </div>
         <% end %>
+        <div class="float-right">
+          <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_note_path(note), class: 'btn btn-light') %>
+          <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), note, method: :delete, data: { confirm: 'This action cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
+        </div>
       </div>
     <% end %>
   <% end %>
@@ -52,4 +63,3 @@
 </div>
 <br>
 
-<%= link_to 'New Folder', new_folder_path %>

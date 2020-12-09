@@ -18,6 +18,10 @@
           </p>
         </div>
       <% end %>
+      <div class="float-right">
+        <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_folder_path(folder), class: 'btn btn-light') %>
+        <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), folder, method: :delete, data: { confirm: 'This action will delete all contents of this folder and cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
+      </div>
     </div>
     <% end %>
   <% end %>
@@ -41,6 +45,10 @@
             </p>
           </div>
         <% end %>
+          <div class="float-right">
+            <%= link_to(raw("<i class='fa fa-pen'></i> Edit"), edit_note_path(note), class: 'btn btn-light') %>
+            <%= link_to(raw("<i class='fa fa-trash'></i> Delete"), note, method: :delete, data: { confirm: 'This action cannot be undone. Are you sure you want to continue?' }, class: 'btn btn-light') %>
+          </div>
       </div>
     <% end %>
   <% end %>
