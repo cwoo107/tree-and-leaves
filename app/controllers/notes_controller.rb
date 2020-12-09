@@ -60,7 +60,11 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to @folder, notice: 'Note was successfully destroyed.' }
+      if @folder.present?
+        format.html { redirect_to @folder, notice: 'Note was successfully destroyed.' }
+      else
+        format.html { redirect_to root_path, notice: 'Note was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end
