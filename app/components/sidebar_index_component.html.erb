@@ -6,6 +6,10 @@
         });
     });
 </script>
+<div>
+  <span class="sub-header"><i class='folder fa fa-folder-open'></i> Home</span>
+</div>
+<br/>
 <ul class="folder-tree">
   <% @folders.order(created_at: :asc).each do |folder| %>
     <li><i class="folder fa fa-folder"></i> <%= link_to folder.title, folder_path(folder) %>
