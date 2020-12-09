@@ -4,7 +4,7 @@
   <div class="row">
   <% if @folder.folders %>
   <% @folder.folders.each do |folder| %>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <%= link_to folder_path(folder) do %>
         <div class="card">
       <span class="header">
@@ -27,7 +27,7 @@
   <div class="row">
   <% if @folder.notes %>
     <% @folder.notes.each do |note| %>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
           <%= link_to note_path(note) do %>
             <div class="card">
       <span class="header">
