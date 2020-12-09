@@ -1,0 +1,7 @@
+
+<% if @folder.folderable.present? %>
+  <%= render(BreadcrumbComponent.new(folder: @folder.folderable)) %>
+  <% else %>
+  <%= link_to 'Home', root_path %> /
+<% end %>
+<%= link_to @folder.title, folder_path(@folder) %> /

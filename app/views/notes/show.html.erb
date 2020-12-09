@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<% if @folder.folderable.present? %>
+  <%= render(BreadcrumbComponent.new(folder: @folder.folderable)) %>
+<% else %>
+  <%= link_to 'Home', root_path %> /
+<% end %>
+<%= @note.title %>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
